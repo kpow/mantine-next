@@ -1,22 +1,36 @@
-import { Title, Text, Anchor } from '@mantine/core';
+
+import { Card, Image, Text, Badge, Button, Group, useMantineTheme } from '@mantine/core';
 
 export default function HomePage() {
+  const theme = useMantineTheme();
+
+  const secondaryColor = theme.colorScheme === 'dark'
+    ? theme.colors.dark[1]
+    : theme.colors.gray[7];
+
   return (
-    <>
-      <Title sx={{ fontSize: 100, fontWeight: 900, letterSpacing: -2 }} align="center" mt={100}>
-        Welcome to{' '}
-        <Text inherit variant="gradient" component="span">
-          Mantine
+    <div style={{ width: 340, margin: 'auto' }}>
+      <Card shadow="sm" padding="lg">
+        <Card.Section>
+          <Image src="./image.png" height={160} alt="Norway" />
+        </Card.Section>
+
+        <Group position="apart" style={{ marginBottom: 5, marginTop: theme.spacing.sm }}>
+          <Text weight={500}>Norway Fjord Adventures</Text>
+          <Badge color="pink" variant="light">
+            On Sale
+          </Badge>
+        </Group>
+
+        <Text size="sm" style={{ color: secondaryColor, lineHeight: 1.5 }}>
+          With Fjord Tours you can explore more of the magical fjord landscapes with tours and
+          activities on and around the fjords of Norway
         </Text>
-      </Title>
-      <Text color="dimmed" align="center" size="lg" sx={{ maxWidth: 580 }} mx="auto" mt="xl">
-        This starter Next.js projects includes a minimal setup for server side rendering, if you
-        want to learn more on Mantine + Next.js integration follow{' '}
-        <Anchor href="https://mantine.dev/theming/next/" size="lg">
-          this guide
-        </Anchor>
-        . To get started edit index.tsx file.
-      </Text>
-    </>
+
+        <Button variant="light" color="blue" fullWidth style={{ marginTop: 14 }}>
+          Book classic tour now
+        </Button>
+      </Card>
+    </div>
   );
 }
